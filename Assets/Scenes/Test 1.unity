@@ -873,7 +873,7 @@ Prefab:
     - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
         type: 2}
       propertyPath: trackingDistance
-      value: 35
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f7f90777ac8143ac49456e694c2f3, type: 2}
@@ -932,6 +932,11 @@ Prefab:
       propertyPath: trackingTarget
       value: 
       objectReference: {fileID: 1690662691}
+    - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
+        type: 2}
+      propertyPath: patrolFirstPoint
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f7f90777ac8143ac49456e694c2f3, type: 2}
   m_IsPrefabParent: 0
@@ -3898,6 +3903,11 @@ Prefab:
       propertyPath: patrolFirstPoint
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
+        type: 2}
+      propertyPath: trackingDistance
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f7f90777ac8143ac49456e694c2f3, type: 2}
   m_IsPrefabParent: 0
@@ -5200,7 +5210,7 @@ Prefab:
     - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
         type: 2}
       propertyPath: trackingDistance
-      value: 35
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f7f90777ac8143ac49456e694c2f3, type: 2}

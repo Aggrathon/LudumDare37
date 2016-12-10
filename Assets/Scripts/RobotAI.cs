@@ -73,7 +73,7 @@ public class RobotAI : MonoBehaviour {
 				}
 				if((lastTargetPosition-transform.position).sqrMagnitude < 4f)
 				{
-					if((trackingTarget.position-transform.position).sqrMagnitude < 2f || CheckVisible())
+					if((trackingTarget.position-transform.position).sqrMagnitude < 3f || CheckVisible())
 					{
 						lastTargetPosition = trackingTarget.position;
 					}
