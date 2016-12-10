@@ -47,6 +47,7 @@ ModelImporter:
     100078: Windows_001
     100080: Windows_002
     100082: Windows_003
+    100084: Sidewalk
     400000: //RootNode
     400002: Building
     400004: Window
@@ -89,6 +90,7 @@ ModelImporter:
     400078: Windows_001
     400080: Windows_002
     400082: Windows_003
+    400084: Sidewalk
     2300000: //RootNode
     2300002: Building
     2300004: Window
@@ -127,6 +129,7 @@ ModelImporter:
     2300070: Window_033
     2300072: Window_034
     2300074: Window_035
+    2300076: Sidewalk
     3300000: //RootNode
     3300002: Building
     3300004: Window
@@ -165,6 +168,7 @@ ModelImporter:
     3300070: Window_033
     3300072: Window_034
     3300074: Window_035
+    3300076: Sidewalk
     4300000: Cube
     4300002: Building
     4300004: Window_035
@@ -203,6 +207,7 @@ ModelImporter:
     4300070: Window_005
     4300072: Window_004
     4300074: Window_003
+    4300076: Sidewalk
     7400000: Default Take
     9500000: //RootNode
   materials:
