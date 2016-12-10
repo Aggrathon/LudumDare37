@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4947839770981782}
   - component: {fileID: 195701672647719920}
   - component: {fileID: 114292563511616990}
+  - component: {fileID: 136572608955101986}
+  - component: {fileID: 54011908016851122}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -54,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4962892295958876}
   - component: {fileID: 33023591030637174}
-  - component: {fileID: 136649704344762388}
   - component: {fileID: 23688625635564492}
   m_Layer: 0
   m_Name: head
@@ -72,7 +73,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4538181421876418}
   - component: {fileID: 33894436584487398}
-  - component: {fileID: 136848204658462600}
   - component: {fileID: 23486628710278490}
   m_Layer: 0
   m_Name: Body
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 33462477381243116}
   - component: {fileID: 23804626277707824}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,8 +173,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027417785457014}
-  m_LocalRotation: {x: -0, y: 0.9861143, z: -0, w: -0.16606833}
-  m_LocalPosition: {x: 7.43, y: 0, z: 19.73}
+  m_LocalRotation: {x: -0, y: 0.9734473, z: -0, w: 0.2289111}
+  m_LocalPosition: {x: 0, y: 0, z: 3.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4117513412045990}
@@ -182,7 +182,7 @@ Transform:
   - {fileID: 4962892295958876}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 199.11899, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 153.53401, z: 0}
 --- !u!4 &4962892295958876
 Transform:
   m_ObjectHideFlags: 1
@@ -349,6 +349,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1288340657428448}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54011908016851122
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1027417785457014}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!108 &108422370895770336
 Light:
   m_ObjectHideFlags: 1
@@ -396,34 +411,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrol: {fileID: 0}
   patrolDistance: 4
-  patrolForward: 1
-  patrolFirstPoint: 0
---- !u!136 &136649704344762388
+  patrolForward: 0
+  patrolFirstPoint: 3
+  trackingAngle: 80
+  trackingDistance: 35
+  headRotation: 180
+  trackingTarget: {fileID: 0}
+  trackingHead: {fileID: 4962892295958876}
+--- !u!136 &136572608955101986
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1274823004215480}
+  m_GameObject: {fileID: 1027417785457014}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.55
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136848204658462600
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1288340657428448}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &195701672647719920
 NavMeshAgent:
   m_ObjectHideFlags: 1
