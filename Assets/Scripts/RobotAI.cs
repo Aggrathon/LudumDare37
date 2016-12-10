@@ -11,7 +11,8 @@ public class RobotAI : MonoBehaviour {
 	enum State
 	{
 		Patrolling,
-		Hunting
+		Hunting,
+		Firing
 	}
 
 	[Header("Patrol")]
@@ -19,23 +20,30 @@ public class RobotAI : MonoBehaviour {
 	public float patrolDistance = 4f;
 	public bool patrolForward = true;
 	public int patrolFirstPoint = 0;
+	int patrolPosition;
 
 	[Header("Tracking")]
 	public float trackingAngle = 80f;
-	public float trackingDistance = 20f;
+	public float trackingDistance = 30f;
 	public float headRotation = 180f;
 	public Transform trackingTarget;
 	public Transform trackingHead;
+	Vector3 lastTargetPosition;
+
+	[Header("Firing")]
+	public float fireCooldown = 5f;
+	public float fireRange = 10f;
+	float lastFire;
 
 	[Header("Sounds")]
 	public AudioClip audioLostTracking;
 	public AudioClip audioTracking;
+	public AudioClip audioChargeUp;
+	public AudioClip audioExplosion;
+	new AudioSource audio;
 
 	NavMeshAgent navAgent;
-	new AudioSource audio;
 	State state;
-	int patrolPosition;
-	Vector3 lastTargetPosition;
 
 	void Start()
 	{
@@ -53,6 +61,7 @@ public class RobotAI : MonoBehaviour {
 			case State.Patrolling:
 				if (CheckVisible())
 				{
+					HuntState();
 					return;
 				}
 				if (Vector3.Distance(transform.position, patrol.GetChild(patrolPosition).position) < patrolDistance)
@@ -67,37 +76,57 @@ public class RobotAI : MonoBehaviour {
 				break;
 
 			case State.Hunting:
-				if((trackingTarget.position-lastTargetPosition).sqrMagnitude > 2f)
+				if((trackingTarget.position-lastTargetPosition).sqrMagnitude > 2f && CheckVisible())
 				{
-					CheckVisible();
-				}
-				if((lastTargetPosition-transform.position).sqrMagnitude < 4f)
-				{
-					if((trackingTarget.position-transform.position).sqrMagnitude < 3f || CheckVisible())
-					{
-						lastTargetPosition = trackingTarget.position;
-					}
-					else
-					{
-						state = State.Patrolling;
-						audio.Stop();
-						audio.loop = false;
-						audio.clip = audioLostTracking;
-						audio.Play();
-						navAgent.SetDestination(patrol.GetChild(patrolPosition).position);
-						Debug.Log(name + ": Lost Track");
-						return;
-					}
+					navAgent.SetDestination(lastTargetPosition);
 				}
 				Vector3 dir = lastTargetPosition - transform.position;
 				dir.y = 0;
+				float magn = dir.sqrMagnitude;
+				if (Time.time-lastFire > fireCooldown && magn < fireRange*fireRange && CheckVisible())
+				{
+					FireState();
+				}
+				else if(magn < 4f)
+				{
+					if((trackingTarget.position-transform.position).sqrMagnitude < 4f)
+					{
+						lastTargetPosition = trackingTarget.position;
+						navAgent.SetDestination(lastTargetPosition);
+					}
+					else
+					{
+						PatrolState();
+						return;
+					}
+				}
 				if(dir.x == 0 && dir.y == 0)
 				{
 					return;
 				}
 				trackingHead.rotation = Quaternion.RotateTowards(trackingHead.rotation, Quaternion.LookRotation(dir, Vector3.up), headRotation*Time.deltaTime);
 				break;
+
+			case State.Firing:
+				if(Time.time-lastFire<audioChargeUp.length)
+				{
+					CheckVisible();
+					dir = lastTargetPosition - transform.position;
+					dir.y = 0;
+					trackingHead.rotation = Quaternion.RotateTowards(trackingHead.rotation, Quaternion.LookRotation(dir, Vector3.up), headRotation * Time.deltaTime);
+				}
+				else
+				{
+					audio.clip = audioExplosion;
+					audio.Play();
+					lastFire = Time.time+audioExplosion.length+0.1f;
+					StartCoroutine(AfterFire());
+
+
+				}
+				break;
 		}
+
 	}
 
 	bool CheckVisible()
@@ -113,15 +142,6 @@ public class RobotAI : MonoBehaviour {
 					if (hit.collider.CompareTag("Player"))
 					{
 						lastTargetPosition = hit.transform.position;
-						navAgent.SetDestination(lastTargetPosition);
-						if(state != State.Hunting)
-						{
-							audio.Stop();
-							audio.loop = true;
-							audio.clip = audioTracking;
-							audio.Play();
-							state = State.Hunting;
-						}
 						return true;
 					}
 				}
@@ -130,4 +150,53 @@ public class RobotAI : MonoBehaviour {
 		return false;
 	}
 
+	void FireState()
+	{
+		if (state != State.Firing)
+		{
+			navAgent.Stop();
+			audio.Stop();
+			audio.loop = false;
+			audio.clip = audioChargeUp;
+			audio.Play();
+			state = State.Firing;
+			lastFire = Time.time;
+		}
+	}
+
+	void HuntState()
+	{
+		if (state != State.Hunting)
+		{
+			audio.Stop();
+			audio.loop = true;
+			audio.clip = audioTracking;
+			audio.Play();
+			state = State.Hunting;
+		}
+		navAgent.SetDestination(lastTargetPosition);
+	}
+
+	void PatrolState()
+	{
+		if (state != State.Patrolling)
+		{
+			audio.Stop();
+			audio.loop = false;
+			audio.clip = audioLostTracking;
+			audio.Play();
+			state = State.Patrolling;
+			navAgent.SetDestination(patrol.GetChild(patrolPosition).position);
+		}
+	}
+
+	IEnumerator AfterFire()
+	{
+		yield return new WaitForSeconds(audioExplosion.length);
+		navAgent.Resume();
+		if (CheckVisible())
+			HuntState();
+		else
+			PatrolState();
+	}
 }

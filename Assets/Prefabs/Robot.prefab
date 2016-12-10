@@ -530,8 +530,13 @@ MonoBehaviour:
   headRotation: 180
   trackingTarget: {fileID: 0}
   trackingHead: {fileID: 4476532909258094}
+  fireCooldown: 5
+  fireAngle: 5
+  fireRange: 10
   audioLostTracking: {fileID: 8300000, guid: 31d166700e590fe49b7fa14ed39bf652, type: 3}
   audioTracking: {fileID: 8300000, guid: a59329d40fc5f3b44adb239ea070b09f, type: 3}
+  audioChargeUp: {fileID: 8300000, guid: 35cc2f1ced988bd49a7978a341c4a76e, type: 3}
+  audioExplosion: {fileID: 8300000, guid: 3a4545556f2136a48aff9f759fc9b147, type: 3}
 --- !u!136 &136572608955101986
 CapsuleCollider:
   m_ObjectHideFlags: 1

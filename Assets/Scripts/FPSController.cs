@@ -19,7 +19,7 @@ public class FPSController : MonoBehaviour {
 	{
 		float moveSpeed = speed;
 		if (Input.GetButton("Sprint"))
-			moveSpeed *= 2f;
+			moveSpeed *= 3f;
 		transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X"), 0);
 		cc.SimpleMove(transform.rotation*new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized*moveSpeed);
 		Camera.main.transform.rotation *= Quaternion.Euler(-Input.GetAxis("Mouse Y"), 0, 0);
