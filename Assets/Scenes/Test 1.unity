@@ -932,20 +932,6 @@ Prefab:
       propertyPath: trackingTarget
       value: 
       objectReference: {fileID: 1690662691}
-    - target: {fileID: 4947839770981782, guid: 266f7f90777ac8143ac49456e694c2f3, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 240.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
-        type: 2}
-      propertyPath: trackingDistance
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
-        type: 2}
-      propertyPath: patrolFirstPoint
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f7f90777ac8143ac49456e694c2f3, type: 2}
   m_IsPrefabParent: 0
@@ -3907,6 +3893,11 @@ Prefab:
       propertyPath: patrolForward
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
+        type: 2}
+      propertyPath: patrolFirstPoint
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f7f90777ac8143ac49456e694c2f3, type: 2}
   m_IsPrefabParent: 0
@@ -5190,7 +5181,7 @@ Prefab:
     - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
         type: 2}
       propertyPath: patrolForward
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
         type: 2}
@@ -5210,11 +5201,6 @@ Prefab:
         type: 2}
       propertyPath: trackingDistance
       value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
-        type: 2}
-      propertyPath: patrolDistance
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f7f90777ac8143ac49456e694c2f3, type: 2}

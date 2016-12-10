@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[DisallowMultipleComponent]
+[RequireComponent(typeof(AudioSource))]
 public class RobotAI : MonoBehaviour {
 
 	enum State
@@ -25,7 +27,12 @@ public class RobotAI : MonoBehaviour {
 	public Transform trackingTarget;
 	public Transform trackingHead;
 
+	[Header("Sounds")]
+	public AudioClip audioLostTracking;
+	public AudioClip audioTracking;
+
 	NavMeshAgent navAgent;
+	new AudioSource audio;
 	State state;
 	int patrolPosition;
 	Vector3 lastTargetPosition;
@@ -33,6 +40,7 @@ public class RobotAI : MonoBehaviour {
 	void Start()
 	{
 		navAgent = GetComponent<NavMeshAgent>();
+		audio = GetComponent<AudioSource>();
 		patrolPosition = patrolFirstPoint % patrol.childCount;
 		navAgent.SetDestination(patrol.GetChild(patrolPosition).position);
 		state = State.Patrolling;
@@ -63,7 +71,7 @@ public class RobotAI : MonoBehaviour {
 				{
 					CheckVisible();
 				}
-				else if((lastTargetPosition-transform.position).sqrMagnitude < 2)
+				if((lastTargetPosition-transform.position).sqrMagnitude < 4f)
 				{
 					if((trackingTarget.position-transform.position).sqrMagnitude < 2f || CheckVisible())
 					{
@@ -72,8 +80,12 @@ public class RobotAI : MonoBehaviour {
 					else
 					{
 						state = State.Patrolling;
-						//Stop sound
+						audio.Stop();
+						audio.loop = false;
+						audio.clip = audioLostTracking;
+						audio.Play();
 						navAgent.SetDestination(patrol.GetChild(patrolPosition).position);
+						Debug.Log(name + ": Lost Track");
 						return;
 					}
 				}
@@ -81,8 +93,7 @@ public class RobotAI : MonoBehaviour {
 				dir.y = 0;
 				if(dir.x == 0 && dir.y == 0)
 				{
-					dir = trackingTarget.position - transform.position;
-					dir.y = 0;
+					return;
 				}
 				trackingHead.rotation = Quaternion.RotateTowards(trackingHead.rotation, Quaternion.LookRotation(dir, Vector3.up), headRotation*Time.deltaTime);
 				break;
@@ -105,8 +116,10 @@ public class RobotAI : MonoBehaviour {
 						navAgent.SetDestination(lastTargetPosition);
 						if(state != State.Hunting)
 						{
-							//play sound
-							Debug.Log(name+ ": Hunting");
+							audio.Stop();
+							audio.loop = true;
+							audio.clip = audioTracking;
+							audio.Play();
 							state = State.Hunting;
 						}
 						return true;

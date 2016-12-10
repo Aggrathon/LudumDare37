@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114292563511616990}
   - component: {fileID: 136572608955101986}
   - component: {fileID: 54011908016851122}
+  - component: {fileID: 82287312873418274}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -173,8 +174,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027417785457014}
-  m_LocalRotation: {x: -0, y: 0.9734473, z: -0, w: 0.2289111}
-  m_LocalPosition: {x: 0, y: 0, z: 3.77}
+  m_LocalRotation: {x: -0, y: 0.8655032, z: -0, w: -0.50090337}
+  m_LocalPosition: {x: 2.61, y: 0, z: 10.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4117513412045990}
@@ -182,7 +183,7 @@ Transform:
   - {fileID: 4962892295958876}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 153.53401, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 240.12, z: 0}
 --- !u!4 &4962892295958876
 Transform:
   m_ObjectHideFlags: 1
@@ -364,6 +365,87 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!82 &82287312873418274
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1027417785457014}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243649681097831776, guid: e88d1c4896996c444bd5e44401999cb1,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!108 &108422370895770336
 Light:
   m_ObjectHideFlags: 1
@@ -411,13 +493,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrol: {fileID: 0}
   patrolDistance: 4
-  patrolForward: 0
-  patrolFirstPoint: 3
+  patrolForward: 1
+  patrolFirstPoint: 1
   trackingAngle: 80
-  trackingDistance: 35
+  trackingDistance: 30
   headRotation: 180
   trackingTarget: {fileID: 0}
   trackingHead: {fileID: 4962892295958876}
+  audioLostTracking: {fileID: 8300000, guid: 31d166700e590fe49b7fa14ed39bf652, type: 3}
+  audioTracking: {fileID: 8300000, guid: a59329d40fc5f3b44adb239ea070b09f, type: 3}
 --- !u!136 &136572608955101986
 CapsuleCollider:
   m_ObjectHideFlags: 1
