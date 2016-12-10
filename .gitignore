@@ -30,3 +30,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Own
+*.blend1
+*.blend1.meta
