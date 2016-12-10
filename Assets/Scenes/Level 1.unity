@@ -935,7 +935,7 @@ Prefab:
     - target: {fileID: 114292563511616990, guid: 266f7f90777ac8143ac49456e694c2f3,
         type: 2}
       propertyPath: patrolFirstPoint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 266f7f90777ac8143ac49456e694c2f3, type: 2}

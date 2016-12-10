@@ -33,6 +33,8 @@ public class RobotAI : MonoBehaviour {
 	[Header("Firing")]
 	public float fireCooldown = 5f;
 	public float fireRange = 10f;
+	public float fireDuration = 0.5f;
+	public LineRenderer fireLazer;
 	float lastFire;
 
 	[Header("Sounds")]
@@ -121,8 +123,21 @@ public class RobotAI : MonoBehaviour {
 					audio.Play();
 					lastFire = Time.time+audioExplosion.length+0.1f;
 					StartCoroutine(AfterFire());
-
-
+					fireLazer.SetPosition(0, fireLazer.transform.position);
+					RaycastHit hit;
+					if(Physics.Raycast(fireLazer.transform.position + fireLazer.transform.forward, fireLazer.transform.forward, out hit, 200f))
+					{
+						fireLazer.SetPosition(1, hit.point);
+						if(hit.transform.CompareTag("Player"))
+						{
+							Debug.Log("Player is Dead");
+						}
+					}
+					else
+					{
+						fireLazer.SetPosition(1, fireLazer.transform.position+fireLazer.transform.forward*200f);
+					}
+					StartCoroutine(FlashLazer());
 				}
 				break;
 		}
@@ -198,5 +213,12 @@ public class RobotAI : MonoBehaviour {
 			HuntState();
 		else
 			PatrolState();
+	}
+
+	IEnumerator FlashLazer()
+	{
+		fireLazer.gameObject.SetActive(true);
+		yield return new WaitForSeconds(fireDuration);
+		fireLazer.gameObject.SetActive(false);
 	}
 }
