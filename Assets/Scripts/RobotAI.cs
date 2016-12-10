@@ -28,7 +28,10 @@ public class RobotAI : MonoBehaviour {
 	public float headRotation = 180f;
 	public Transform trackingTarget;
 	public Transform trackingHead;
-	Vector3 lastTargetPosition;
+
+	static Vector3 lastTargetPosition;
+	static int lastPositionCounter;
+	int lastPositionLookedAt;
 
 	[Header("Firing")]
 	public float fireCooldown = 5f;
@@ -58,6 +61,7 @@ public class RobotAI : MonoBehaviour {
 
 	void Update()
 	{
+		Vector3 dir;
 		switch (state)
 		{
 			case State.Patrolling:
@@ -74,7 +78,16 @@ public class RobotAI : MonoBehaviour {
 						patrolPosition = (patrolPosition + patrol.childCount - 1) % patrol.childCount;
 					navAgent.SetDestination(patrol.GetChild(patrolPosition).position);
 				}
-				trackingHead.localRotation = Quaternion.RotateTowards(trackingHead.localRotation, new Quaternion(0,0,0,1),headRotation*Time.deltaTime);
+				if(lastPositionLookedAt == lastPositionCounter)
+					trackingHead.localRotation = Quaternion.RotateTowards(trackingHead.localRotation, new Quaternion(0,0,0,1),headRotation*Time.deltaTime);
+				else
+				{
+					dir = lastTargetPosition - transform.position;
+					if (Vector3.Angle(trackingHead.forward, dir) < trackingAngle * 0.25f)
+						lastPositionLookedAt = lastPositionCounter;
+					trackingHead.rotation = Quaternion.RotateTowards(trackingHead.rotation, Quaternion.LookRotation(dir, Vector3.up), headRotation * Time.deltaTime);
+				}
+
 				break;
 
 			case State.Hunting:
@@ -82,7 +95,7 @@ public class RobotAI : MonoBehaviour {
 				{
 					navAgent.SetDestination(lastTargetPosition);
 				}
-				Vector3 dir = lastTargetPosition - transform.position;
+				dir = lastTargetPosition - transform.position;
 				dir.y = 0;
 				float magn = dir.sqrMagnitude;
 				if (Time.time-lastFire > fireCooldown && magn < fireRange*fireRange && CheckVisible())
@@ -95,6 +108,7 @@ public class RobotAI : MonoBehaviour {
 					{
 						lastTargetPosition = trackingTarget.position;
 						navAgent.SetDestination(lastTargetPosition);
+						dir = lastTargetPosition - transform.position;
 					}
 					else
 					{
@@ -104,6 +118,7 @@ public class RobotAI : MonoBehaviour {
 				}
 				if(dir.x == 0 && dir.y == 0)
 				{
+					PatrolState();
 					return;
 				}
 				trackingHead.rotation = Quaternion.RotateTowards(trackingHead.rotation, Quaternion.LookRotation(dir, Vector3.up), headRotation*Time.deltaTime);
@@ -157,6 +172,7 @@ public class RobotAI : MonoBehaviour {
 					if (hit.collider.CompareTag("Player"))
 					{
 						lastTargetPosition = hit.transform.position;
+						lastPositionCounter++;
 						return true;
 					}
 				}
@@ -208,11 +224,11 @@ public class RobotAI : MonoBehaviour {
 	IEnumerator AfterFire()
 	{
 		yield return new WaitForSeconds(audioExplosion.length);
-		navAgent.Resume();
 		if (CheckVisible())
 			HuntState();
 		else
 			PatrolState();
+		navAgent.Resume();
 	}
 
 	IEnumerator FlashLazer()
