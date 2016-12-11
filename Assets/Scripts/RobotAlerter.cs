@@ -36,7 +36,7 @@ public class RobotAlerter : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider col)
 	{
-		if (col.transform.CompareTag("Player"))
+		if (col.transform.CompareTag("Player") && enabled)
 		{
 			GameState.instance.player.AddThrowable();
 			GetComponent<AudioSource>().PlayOneShot(pickupSound);
