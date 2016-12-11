@@ -12,7 +12,6 @@ public class FPSController : MonoBehaviour {
 	
 	void Start () {
 		cc = GetComponent<CharacterController>();
-		OnApplicationFocus(true);
 	}
 	
 	void Update ()
@@ -23,16 +22,5 @@ public class FPSController : MonoBehaviour {
 		transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X"), 0);
 		cc.SimpleMove(transform.rotation*new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized*moveSpeed);
 		Camera.main.transform.rotation *= Quaternion.Euler(-Input.GetAxis("Mouse Y"), 0, 0);
-	}
-
-	void OnApplicationFocus(bool hasFocus)
-	{
-		Cursor.lockState = hasFocus ? CursorLockMode.Locked : CursorLockMode.None;
-		Cursor.visible = hasFocus;
-	}
-
-	void OnDestroy()
-	{
-		OnApplicationFocus(false);
 	}
 }
