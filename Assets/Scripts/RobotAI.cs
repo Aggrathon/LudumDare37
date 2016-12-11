@@ -238,4 +238,13 @@ public class RobotAI : MonoBehaviour {
 		yield return new WaitForSeconds(fireDuration);
 		fireLazer.gameObject.SetActive(false);
 	}
+
+	void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.blue;
+		if(patrol!=null && patrolFirstPoint >= 0 && patrolFirstPoint < patrol.childCount)
+		{
+			Gizmos.DrawLine(transform.position, patrol.GetChild(patrolFirstPoint).position);
+		}
+	}
 }
