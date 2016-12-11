@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOnly: 1
-  onTrigger:
+  onEnter:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 976788086}
@@ -261,6 +261,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!65 &18666292
@@ -3136,7 +3141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1180213903}
-  nextScene: Level 1
+  nextScene: Level 2
 --- !u!1001 &983929091
 Prefab:
   m_ObjectHideFlags: 0
