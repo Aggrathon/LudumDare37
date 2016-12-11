@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1774777670294450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.08, y: 1, z: -58.7}
+  m_LocalPosition: {x: 0, y: 1, z: -105.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4775469312899960}
@@ -176,6 +176,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  sprintLength: 2
+  sprintRecovery: 5
+  sprintSpeed: 8
+  sprintAmount: 0
+  numThrowable: 0
+  hasBucket: 0
+  throwSpeed: 15
+  throwablePrefab: {fileID: 1054183726771880, guid: 671f929172734c749a89faf69f729a88,
+    type: 2}
 --- !u!124 &124357294405046306
 Behaviour:
   m_ObjectHideFlags: 1

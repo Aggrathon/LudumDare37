@@ -117,7 +117,12 @@ public class RobotAI : MonoBehaviour {
 						return;
 					}
 				}
-				if(dir.x == 0 && dir.y == 0)
+				else if(navAgent.remainingDistance < 1f || navAgent.remainingDistance > 1000f)
+				{
+					PatrolState();
+					return;
+				}
+				if(magn < float.Epsilon)
 				{
 					PatrolState();
 					return;
@@ -168,7 +173,7 @@ public class RobotAI : MonoBehaviour {
 			if (Vector3.Angle(direction, trackingHead.forward) < trackingAngle)
 			{
 				RaycastHit hit;
-				if (Physics.Raycast(trackingHead.position+trackingHead.forward, direction, out hit, trackingDistance))
+				if (Physics.Raycast(trackingHead.position+trackingHead.forward*0.5f, direction, out hit, trackingDistance))
 				{
 					if (hit.collider.CompareTag("Player"))
 					{
@@ -246,5 +251,17 @@ public class RobotAI : MonoBehaviour {
 		{
 			Gizmos.DrawLine(transform.position, patrol.GetChild(patrolFirstPoint).position);
 		}
+	}
+
+	public static void Alert(Vector3 position)
+	{
+		lastTargetPosition = position;
+		lastPositionCounter++;
+	}
+
+	public void ForceCheckArea(Vector3 position)
+	{
+		Alert(position);
+		HuntState();
 	}
 }

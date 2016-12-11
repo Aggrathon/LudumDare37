@@ -23,4 +23,10 @@ public class TriggerEvent : MonoBehaviour {
 			onExit.Invoke();
 		}
 	}
+
+	public void EventPickupThrowable()
+	{
+		GameState.instance.player.AddThrowable();
+		Destroy(gameObject);
+	}
 }

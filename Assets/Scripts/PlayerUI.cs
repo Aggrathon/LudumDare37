@@ -11,12 +11,18 @@ public class PlayerUI : MonoBehaviour {
 	public float sprintFadeSpeed = 1f;
 	float sprintLerp;
 
+	[Header("Abilities")]
+	public GameObject throwIcon;
+	public Text throwCount;
+	int throwCache;
+
 
 	FPSController player;
 
 	void Start()
 	{
 		player = GameState.instance.player;
+		throwCache = player.numThrowable-1;
 	}
 
 	void Update()
@@ -39,6 +45,13 @@ public class PlayerUI : MonoBehaviour {
 			c.a *= sprintLerp;
 			sprintbar.color = c;
 			sprintText.color = c;
+		}
+
+		if(throwCache != player.numThrowable)
+		{
+			throwCache = player.numThrowable;
+			throwCount.text = throwCache.ToString();
+			throwIcon.SetActive(throwCache > 0);
 		}
 	}
 }

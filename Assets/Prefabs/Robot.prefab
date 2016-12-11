@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 136572608955101986}
   - component: {fileID: 54011908016851122}
   - component: {fileID: 82287312873418274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4113623274105558}
   - component: {fileID: 120621887592733944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lazer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 4117513412045990}
   - component: {fileID: 33304059603611450}
   - component: {fileID: 23058412334597072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4294133475402620}
   - component: {fileID: 33025467068431122}
   - component: {fileID: 23514971180267580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4632888582224278}
   - component: {fileID: 108422370895770336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4413046567345070}
   - component: {fileID: 33201477407431994}
   - component: {fileID: 23051835476988378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4387288076934752}
   - component: {fileID: 33062120986718358}
   - component: {fileID: 23973884026774840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4476532909258094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,6 @@ MonoBehaviour:
   trackingAngle: 80
   trackingDistance: 30
   headRotation: 180
-  trackingTarget: {fileID: 0}
   trackingHead: {fileID: 4476532909258094}
   fireCooldown: 5
   fireRange: 10

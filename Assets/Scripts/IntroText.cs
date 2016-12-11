@@ -51,7 +51,7 @@ public class IntroText : MonoBehaviour {
 		}
 		else
 		{
-			if(nextIndex >=story.Length)
+			if(nextIndex == story.Length)
 			{
 				lerp -= Time.unscaledDeltaTime * fadeSpeed;
 				if (lerp < 0f)
@@ -61,6 +61,10 @@ public class IntroText : MonoBehaviour {
 				}
 				else
 					GetComponent<Image>().color = Color.black * lerp;
+			}
+			else if (nextIndex > story.Length)
+			{
+				gameObject.SetActive(false);
 			}
 			else
 			{
