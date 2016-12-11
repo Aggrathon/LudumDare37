@@ -1,17 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
-public class OutroText : MonoBehaviour {
+public class RestartMenu : MonoBehaviour {
 
-	public Text text;
-	public string nextScene;
-	float fadeSpeed = 1f;
+	public float fadeSpeed = 1f;
 
 	void OnEnable()
 	{
-		text.text = string.Format(text.text, (int)(Time.timeSinceLevelLoad));
 		StartCoroutine(FadeIn());
 		GameState.SetMenuActive(true);
 	}
@@ -19,13 +16,13 @@ public class OutroText : MonoBehaviour {
 	IEnumerator FadeIn()
 	{
 		float lerp = 0f;
-		while(true)
+		while (true)
 		{
 			lerp += Time.unscaledDeltaTime * fadeSpeed;
-			if(lerp > 1f)
+			if (lerp > 1f)
 			{
 				GetComponent<Image>().color = Color.black * 1f;
-				for(int i = 0; i < transform.childCount; i++)
+				for (int i = 0; i < transform.childCount; i++)
 				{
 					transform.GetChild(i).gameObject.SetActive(true);
 				}
@@ -36,8 +33,8 @@ public class OutroText : MonoBehaviour {
 		}
 	}
 
-	public void NextLevel()
+	public void Restart()
 	{
-		SceneManager.LoadScene(nextScene);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }

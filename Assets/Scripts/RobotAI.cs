@@ -26,11 +26,11 @@ public class RobotAI : MonoBehaviour {
 	public float trackingAngle = 80f;
 	public float trackingDistance = 30f;
 	public float headRotation = 180f;
-	public Transform trackingTarget;
 	public Transform trackingHead;
 
 	static Vector3 lastTargetPosition;
 	static int lastPositionCounter;
+	Transform trackingTarget;
 	int lastPositionLookedAt;
 
 	[Header("Firing")]
@@ -54,6 +54,7 @@ public class RobotAI : MonoBehaviour {
 	{
 		navAgent = GetComponent<NavMeshAgent>();
 		audio = GetComponent<AudioSource>();
+		trackingTarget = GameState.instance.player.transform;
 		patrolPosition = patrolFirstPoint % patrol.childCount;
 		navAgent.SetDestination(patrol.GetChild(patrolPosition).position);
 		state = State.Patrolling;
@@ -145,7 +146,7 @@ public class RobotAI : MonoBehaviour {
 						fireLazer.SetPosition(1, hit.point);
 						if(hit.transform.CompareTag("Player"))
 						{
-							Debug.Log("Player is Dead");
+							GameState.instance.onPlayerDeath.Invoke();
 						}
 					}
 					else

@@ -1,14 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class MenuState : MonoBehaviour {
+public class GameState : MonoBehaviour {
 
+	[Header("Objects")]
+	public FPSController player;
+
+	[Header("UI")]
 	public bool startInMenu = true;
 
-	void Start()
+	[Header("Events")]
+	public UnityEvent onPlayerDeath;
+
+	public static GameState instance;
+
+	void Awake()
 	{
 		SetMenuActive(startInMenu);
+		instance = this;
 	}
 
 	public static void SetMenuActive(bool state)
@@ -29,6 +40,7 @@ public class MenuState : MonoBehaviour {
 
 	void OnDestroy()
 	{
+		instance = null;
 		Time.timeScale = 1f;
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;

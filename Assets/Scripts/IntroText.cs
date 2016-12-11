@@ -58,7 +58,7 @@ public class IntroText : MonoBehaviour {
 					lerp = 0f;
 					gameObject.SetActive(false);
 					onFinished.Invoke();
-					MenuState.SetMenuActive(false);
+					GameState.SetMenuActive(false);
 				}
 				else
 					GetComponent<Image>().color = Color.black * lerp;
