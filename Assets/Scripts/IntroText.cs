@@ -16,6 +16,7 @@ public class IntroText : MonoBehaviour {
 
 	void Start()
 	{
+		GameState.SetMenuActive(true);
 		text.text = "";
 		index = -1;
 		nextIndex = 0;
@@ -57,8 +58,6 @@ public class IntroText : MonoBehaviour {
 				{
 					lerp = 0f;
 					gameObject.SetActive(false);
-					onFinished.Invoke();
-					GameState.SetMenuActive(false);
 				}
 				else
 					GetComponent<Image>().color = Color.black * lerp;
@@ -78,5 +77,11 @@ public class IntroText : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	void OnDisable()
+	{
+		onFinished.Invoke();
+		GameState.SetMenuActive(false);
 	}
 }

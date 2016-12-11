@@ -9,7 +9,7 @@ public class GameState : MonoBehaviour {
 	public FPSController player;
 
 	[Header("UI")]
-	public bool startInMenu = true;
+	public bool startInMenu = false;
 
 	[Header("Events")]
 	public UnityEvent onPlayerDeath;
