@@ -87,6 +87,7 @@ public class RobotAI : MonoBehaviour {
 				else
 				{
 					dir = lastTargetPosition - transform.position;
+					dir.y = 0;
 					if (Vector3.Angle(trackingHead.forward, dir) < trackingAngle * 0.25f)
 						lastPositionLookedAt = lastPositionCounter;
 					trackingHead.rotation = Quaternion.RotateTowards(trackingHead.rotation, Quaternion.LookRotation(dir, Vector3.up), headRotation * Time.deltaTime);

@@ -48,7 +48,7 @@ public class FPSController : MonoBehaviour {
 		if(Input.GetButtonUp("Gadget"))
 		{
 			RaycastHit hit;
-			if (hasBucket && Physics.Raycast(Camera.main.transform.position + Camera.main.transform.forward * 0.5f, Camera.main.transform.forward, out hit, bucketDistance))
+			if (hasBucket && Physics.Raycast(transform.position + transform.forward * 0.5f, Camera.main.transform.forward, out hit, bucketDistance))
 			{
 				RobotAI ai = hit.transform.GetComponent<RobotAI>();
 				if(ai != null)
