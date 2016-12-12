@@ -557,7 +557,7 @@ MonoBehaviour:
   patrolFirstPoint: 0
   trackingAngle: 75
   trackingDistance: 30
-  headRotation: 120
+  headRotation: 100
   trackingHead: {fileID: 4476532909258094}
   fireCooldown: 5
   fireRange: 15

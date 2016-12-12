@@ -55,6 +55,5 @@ public class FPSController : MonoBehaviour {
 	public void AddThrowable()
 	{
 		numThrowable++;
-		//TODO Sound
 	}
 }

@@ -206,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   alertRadius: 30
   pickupSound: {fileID: 8300000, guid: 3be4e77adad6024409df6d17e1fb8c24, type: 3}
   collisionSound: {fileID: 8300000, guid: 361aa462b8c6161489fcbed58f5b5adb, type: 3}

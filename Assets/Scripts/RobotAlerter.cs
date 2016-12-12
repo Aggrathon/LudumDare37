@@ -38,6 +38,7 @@ public class RobotAlerter : MonoBehaviour {
 			buffer[i].GetComponent<RobotAI>().ForceCheckArea(transform.position);
 		}
 		lastTime = Time.time;
+		Debug.Log(count);
 	}
 	
 	void OnTriggerEnter(Collider col)
