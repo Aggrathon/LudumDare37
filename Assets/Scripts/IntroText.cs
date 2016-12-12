@@ -36,7 +36,7 @@ public class IntroText : MonoBehaviour {
 
 	void Update()
 	{
-		if(Input.GetButtonUp("Jump"))
+		if(Input.GetButtonUp("Next"))
 		{
 			NextStep();
 		}
@@ -68,17 +68,14 @@ public class IntroText : MonoBehaviour {
 			}
 			else
 			{
-				if (lerp > 0f)
+				lerp -= Time.unscaledDeltaTime * fadeSpeed;
+				if (lerp < 0f)
 				{
-					lerp -= Time.unscaledDeltaTime * fadeSpeed;
-					if (lerp < 0f)
-					{
-						text.text = story[nextIndex];
-						index = nextIndex;
-						lerp = 0f;
-					}
-					text.color = Color.white * lerp;
+					text.text = story[nextIndex];
+					index = nextIndex;
+					lerp = 0f;
 				}
+				text.color = Color.white * lerp;
 			}
 		}
 	}

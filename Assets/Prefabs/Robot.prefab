@@ -555,12 +555,12 @@ MonoBehaviour:
   patrolDistance: 4
   patrolForward: 1
   patrolFirstPoint: 0
-  trackingAngle: 80
+  trackingAngle: 75
   trackingDistance: 30
-  headRotation: 180
+  headRotation: 120
   trackingHead: {fileID: 4476532909258094}
   fireCooldown: 5
-  fireRange: 10
+  fireRange: 15
   fireDuration: 0.4
   fireLazer: {fileID: 120621887592733944}
   audioLostTracking: {fileID: 8300000, guid: 31d166700e590fe49b7fa14ed39bf652, type: 3}

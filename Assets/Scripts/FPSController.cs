@@ -40,8 +40,8 @@ public class FPSController : MonoBehaviour {
 			if (sprintAmount > 1f) sprintAmount = 1f;
 		}
 		transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X"), 0);
-		//cc.SimpleMove(transform.rotation*new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized*moveSpeed);
-		cc.Move(transform.rotation * new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized * (moveSpeed * Time.deltaTime));
+		cc.SimpleMove(transform.rotation*new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized*moveSpeed);
+		//cc.Move(transform.rotation * new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized * (moveSpeed * Time.deltaTime));
 		Camera.main.transform.rotation *= Quaternion.Euler(-Input.GetAxis("Mouse Y"), 0, 0);
 
 		if(numThrowable > 0 && Input.GetButtonUp("Gadget"))

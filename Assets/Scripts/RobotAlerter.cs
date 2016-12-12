@@ -11,17 +11,23 @@ public class RobotAlerter : MonoBehaviour {
 	public AudioClip collisionSound;
 
 	static float lastTime;
+	float enableTime;
 	Collider[] buffer;
+
+	void OnEnable()
+	{
+		enableTime = Time.time;
+	}
 
 	void OnCollisionEnter(Collision col)
 	{
-		if (Time.time - lastTime < 2f)
-			return;
 
-		if(collisionSound != null)
+		if (collisionSound != null && Time.time - lastTime > 0.2f)
 		{
 			GetComponent<AudioSource>().PlayOneShot(collisionSound);
 		}
+		if (Time.time - lastTime < 1f)
+			return;
 
 		if (buffer == null)
 			buffer = new Collider[20];
@@ -36,7 +42,7 @@ public class RobotAlerter : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider col)
 	{
-		if (col.transform.CompareTag("Player") && enabled)
+		if (enabled && Time.time - enableTime > 0.5f && col.transform.CompareTag("Player"))
 		{
 			GameState.instance.player.AddThrowable();
 			GetComponent<AudioSource>().PlayOneShot(pickupSound);

@@ -209,7 +209,7 @@ MonoBehaviour:
     m_Bits: 0
   alertRadius: 30
   pickupSound: {fileID: 8300000, guid: 3be4e77adad6024409df6d17e1fb8c24, type: 3}
-  collisionSound: {fileID: 0}
+  collisionSound: {fileID: 8300000, guid: 361aa462b8c6161489fcbed58f5b5adb, type: 3}
 --- !u!135 &135594357559748568
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -220,5 +220,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
