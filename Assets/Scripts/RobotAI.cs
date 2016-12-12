@@ -15,6 +15,9 @@ public class RobotAI : MonoBehaviour {
 		Firing
 	}
 
+	public GameObject bucketPrefab;
+	public Transform bucketPlace;
+
 	[Header("Patrol")]
 	public Transform patrol;
 	public float patrolDistance = 4f;
@@ -261,7 +264,21 @@ public class RobotAI : MonoBehaviour {
 
 	public void ForceCheckArea(Vector3 position)
 	{
-		Alert(position);
-		HuntState();
+		if(enabled)
+		{
+			Alert(position);
+			HuntState();
+		}
+	}
+
+	public void Disable()
+	{
+		enabled = false;
+		audio.Stop();
+		audio.loop = false;
+		audio.clip = audioLostTracking;
+		audio.Play();
+		navAgent.Stop();
+		Instantiate(bucketPrefab, bucketPlace,false);
 	}
 }

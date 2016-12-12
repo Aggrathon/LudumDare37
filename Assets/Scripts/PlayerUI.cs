@@ -15,6 +15,8 @@ public class PlayerUI : MonoBehaviour {
 	public GameObject throwIcon;
 	public Text throwCount;
 	int throwCache;
+	public GameObject bucketIcon;
+	bool bucketCache;
 
 
 	FPSController player;
@@ -23,6 +25,7 @@ public class PlayerUI : MonoBehaviour {
 	{
 		player = GameState.instance.player;
 		throwCache = player.numThrowable-1;
+		bucketCache = !player.hasBucket;
 	}
 
 	void Update()
@@ -52,6 +55,12 @@ public class PlayerUI : MonoBehaviour {
 			throwCache = player.numThrowable;
 			throwCount.text = throwCache.ToString();
 			throwIcon.SetActive(throwCache > 0);
+		}
+
+		if(bucketCache != player.hasBucket)
+		{
+			bucketCache = player.hasBucket;
+			bucketIcon.SetActive(bucketCache);
 		}
 	}
 }

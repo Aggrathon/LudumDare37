@@ -692,7 +692,7 @@ Transform:
   - {fileID: 944874188}
   - {fileID: 1577511237}
   - {fileID: 141476670}
-  - {fileID: 1184424178}
+  - {fileID: 1694794844}
   m_Father: {fileID: 2028182463}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2142,6 +2142,11 @@ Prefab:
         type: 2}
       propertyPath: numThrowable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114475095911201354, guid: 6646d03cd3879d24d9f9d98ecc252374,
+        type: 2}
+      propertyPath: hasBucket
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6646d03cd3879d24d9f9d98ecc252374, type: 2}
@@ -11542,6 +11547,9 @@ MonoBehaviour:
   story:
   - I finally know the location
   - The room is finally within my grasp
+  - That bucket could also be useful
+  - Press Q directly next to an enemy to disable them
+  - The bucket can only be used once
   text: {fileID: 1517309644}
   fadeSpeed: 1
   onFinished:
@@ -14253,58 +14261,6 @@ Transform:
   m_Father: {fileID: 1214307466}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 301.623, z: 0}
---- !u!1001 &1184424177
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 52773524}
-    m_Modifications:
-    - target: {fileID: 4703197598604468, guid: 671f929172734c749a89faf69f729a88, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.4259987
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703197598604468, guid: 671f929172734c749a89faf69f729a88, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703197598604468, guid: 671f929172734c749a89faf69f729a88, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.477
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703197598604468, guid: 671f929172734c749a89faf69f729a88, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703197598604468, guid: 671f929172734c749a89faf69f729a88, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703197598604468, guid: 671f929172734c749a89faf69f729a88, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703197598604468, guid: 671f929172734c749a89faf69f729a88, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703197598604468, guid: 671f929172734c749a89faf69f729a88, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 135594357559748568, guid: 671f929172734c749a89faf69f729a88,
-        type: 2}
-      propertyPath: m_Radius
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 671f929172734c749a89faf69f729a88, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &1184424178 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4703197598604468, guid: 671f929172734c749a89faf69f729a88,
-    type: 2}
-  m_PrefabInternal: {fileID: 1184424177}
 --- !u!1001 &1189296354
 Prefab:
   m_ObjectHideFlags: 0
@@ -19911,6 +19867,114 @@ Transform:
   m_PrefabParentObject: {fileID: 4065487392639968, guid: f99c9fcf1528b1b43b12344a09b8ba24,
     type: 2}
   m_PrefabInternal: {fileID: 625645091}
+--- !u!1001 &1694794843
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 52773524}
+    m_Modifications:
+    - target: {fileID: 4961865049592234, guid: e62fe5b138d9b084c9188dc250192c48, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.424
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961865049592234, guid: e62fe5b138d9b084c9188dc250192c48, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961865049592234, guid: e62fe5b138d9b084c9188dc250192c48, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.6447022
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961865049592234, guid: e62fe5b138d9b084c9188dc250192c48, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961865049592234, guid: e62fe5b138d9b084c9188dc250192c48, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961865049592234, guid: e62fe5b138d9b084c9188dc250192c48, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961865049592234, guid: e62fe5b138d9b084c9188dc250192c48, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961865049592234, guid: e62fe5b138d9b084c9188dc250192c48, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e62fe5b138d9b084c9188dc250192c48, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1694794844 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4961865049592234, guid: e62fe5b138d9b084c9188dc250192c48,
+    type: 2}
+  m_PrefabInternal: {fileID: 1694794843}
+--- !u!1 &1694794845 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1281284516500758, guid: e62fe5b138d9b084c9188dc250192c48,
+    type: 2}
+  m_PrefabInternal: {fileID: 1694794843}
+--- !u!114 &1694794846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1694794845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b2ab03d92d2c84ebecfe647931d148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOnly: 1
+  onEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 249512617}
+        m_MethodName: PickupBucket
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1694794845}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!135 &1694794847
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1694794845}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1700234755 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4947839770981782, guid: 266f7f90777ac8143ac49456e694c2f3,

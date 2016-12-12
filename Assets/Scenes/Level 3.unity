@@ -2498,6 +2498,11 @@ Prefab:
       propertyPath: numThrowable
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114475095911201354, guid: 6646d03cd3879d24d9f9d98ecc252374,
+        type: 2}
+      propertyPath: hasBucket
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6646d03cd3879d24d9f9d98ecc252374, type: 2}
   m_IsPrefabParent: 0

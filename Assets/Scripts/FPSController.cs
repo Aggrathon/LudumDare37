@@ -19,6 +19,7 @@ public class FPSController : MonoBehaviour {
 	public bool hasBucket = false;
 	public float throwSpeed = 5f;
 	public GameObject throwablePrefab;
+	public float bucketDistance = 3f;
 
 	CharacterController cc;
 	
@@ -44,16 +45,34 @@ public class FPSController : MonoBehaviour {
 		//cc.Move(transform.rotation * new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized * (moveSpeed * Time.deltaTime));
 		Camera.main.transform.rotation *= Quaternion.Euler(-Input.GetAxis("Mouse Y"), 0, 0);
 
-		if(numThrowable > 0 && Input.GetButtonUp("Gadget"))
+		if(Input.GetButtonUp("Gadget"))
 		{
-			numThrowable--;
-			GameObject go = Instantiate(throwablePrefab, Camera.main.transform.position + Camera.main.transform.forward, new Quaternion(0, 0, 0, 1));
-			go.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * throwSpeed;
+			RaycastHit hit;
+			if (hasBucket && Physics.Raycast(Camera.main.transform.position + Camera.main.transform.forward * 0.5f, Camera.main.transform.forward, out hit, bucketDistance))
+			{
+				RobotAI ai = hit.transform.GetComponent<RobotAI>();
+				if(ai != null)
+				{
+					hasBucket = false;
+					ai.Disable();
+				}
+			}
+			else if (numThrowable > 0)
+			{
+				numThrowable--;
+				GameObject go = Instantiate(throwablePrefab, Camera.main.transform.position + Camera.main.transform.forward, new Quaternion(0, 0, 0, 1));
+				go.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * throwSpeed;
+			}
 		}
 	}
 
 	public void AddThrowable()
 	{
 		numThrowable++;
+	}
+
+	public void PickupBucket()
+	{
+		hasBucket = true;
 	}
 }
